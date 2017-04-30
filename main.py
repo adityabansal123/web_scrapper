@@ -59,7 +59,7 @@ def getWordList(url):
       #if there is still something there, add it to our word list
       if len(cleaned_word) > 0:
         word_list.append(cleaned_word)
-return word_list
+  return word_list
 
 #clean word with regex
 def clean_word(word):
@@ -78,7 +78,7 @@ def createFrequencyTable(word_list):
       word_count[word] += 1
     else:
       word_count[word] = 1
-return word_count
+  return word_count
 
 #remove stop words
 def remove_stop_words(frequency_list):
@@ -89,10 +89,10 @@ def remove_stop_words(frequency_list):
   for key,value in frequency_list:
     if key not in stop_words:
       temp_list.append([key, value])
-return temp_list
+  return temp_list
 
 #access wiki API. json format. query it for data. search type. shows list of possibilities.
-wikpedia_api_link = "https://en.wikipedia.org/w/api.php?format=json&action=query&list=search&srsearch="
+wikipedia_api_link = "https://en.wikipedia.org/w/api.php?format=json&action=query&list=search&srsearch="
 wikipedia_link = "https://en.wikipedia.org/wiki/"
 
 #if the search word is too small, throws error
@@ -107,7 +107,7 @@ string_query = sys.argv[1]
 if (len(sys.argv) > 2):
   search_mode = True
 else:
-  search+mode = False
+  search_mode = False
   
 #create our URL
 url = wikipedia_api_link + string_query
@@ -159,7 +159,7 @@ try:
   print_headers = ['Word', 'Frequency', 'Frequency Percentage']
   
   #print the table with tabulate
-  print(tabulate(final_list, headers = print_headers, table_fmt='orgtbl'))
+  print(tabulate(final_list, headers = print_headers, tablefmt='orgtbl'))
   
 #throw an exception in case it breaks
 except requests.exceptions.Timeout:
